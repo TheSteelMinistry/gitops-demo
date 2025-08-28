@@ -17,6 +17,6 @@ datasources:
         isDefault: false
       - name: Tempo
         type: tempo
-        url: http://tempos
+        url: http://tempo
         access: proxy
         isDefault: false
