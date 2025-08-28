@@ -14,4 +14,4 @@ datasources:
         type: loki
         url: http://loki-gateway
         access: proxy
-        isDefault: true
+        isDefault: false
