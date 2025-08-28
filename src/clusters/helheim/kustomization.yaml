@@ -5,3 +5,4 @@ resources:
 - core/project.yaml
 - core/argocd/application.yaml
 - core/prometheus/application.yaml
+- core/grafana/application.yaml
