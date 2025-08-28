@@ -15,3 +15,8 @@ datasources:
         url: http://loki-gateway
         access: proxy
         isDefault: false
+      - name: Tempo
+        type: tempo
+        url: http://tempos
+        access: proxy
+        isDefault: false
