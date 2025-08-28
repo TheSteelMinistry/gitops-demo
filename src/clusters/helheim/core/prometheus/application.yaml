@@ -19,7 +19,7 @@ spec:
       helm:
         valueFiles:
         - $values/src/clusters/helheim/core/prometheus/values.yaml
-    - repoURL: 'https://github.com/CloudFueled/gitops-demo'
+    - repoURL: 'https://github.com/TheSteelMinistry/gitops-demo'
       targetRevision: HEAD
       ref: values
   syncPolicy:

@@ -11,7 +11,7 @@ spec:
     namespace: argocd
   project: core
   sources:
-    - repoURL: 'https://github.com/CloudFueled/gitops-demo'
+    - repoURL: 'https://github.com/TheSteelMinistry/gitops-demo'
       path: src/clusters/helheim/core/argocd/manifests
       targetRevision: HEAD
   syncPolicy:
