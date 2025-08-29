@@ -22,19 +22,19 @@ alloy:
         }
 
         output {
-          metrics = [otelcol.exporter.prometheus.prometheus.input]
+          metrics = [prometheus.exporter.prometheus.input]
           logs = [otelcol.exporter.loki.loki.input]
           traces = [otelcol.exporter.otlp.tempo.input]
         }
       }
 
-      otelcol.exporter.prometheus "prometheus" {
-        forward_to = [prometheus.remote_write.prometheus.receiver]
+      prometheus.exporter "prometheus" {
+        forward_to = [prometheus.remote_write.pushgateway.receiver]
       }
 
-      prometheus.remote_write "prometheus" {
+      prometheus.remote_write "pushgateway" {
         endpoint {
-          url = "http://prometheus-server:9090/api/v1/write"
+          url = "http://prometheus-prometheus-pushgateway:9091/metrics/job/alloy"
         }
       }
 
