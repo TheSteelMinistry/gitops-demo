@@ -3,6 +3,8 @@ serviceAccounts:
     name: sa-prometheus
 
 server:
+  extraArgs:
+    web.enable-remote-write-receiver: true
   service:
     additionalPorts:
       - name: metrics

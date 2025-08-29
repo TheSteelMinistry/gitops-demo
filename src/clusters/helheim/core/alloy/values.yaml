@@ -29,12 +29,12 @@ alloy:
       }
 
       otelcol.exporter.prometheus "prometheus" {
-        forward_to = [prometheus.remote_write.pushgateway.receiver]
+        forward_to = [prometheus.remote_write.prometheus.receiver]
       }
 
-      prometheus.remote_write "pushgateway" {
+      prometheus.remote_write "prometheus" {
         endpoint {
-          url = "http://prometheus-prometheus-pushgateway:9091/metrics/job/alloy"
+          url = "http://prometheus-server:9090/api/v1/write"
         }
       }
 
