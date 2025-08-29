@@ -4,7 +4,7 @@ serviceAccounts:
 
 server:
   extraArgs:
-    web.enable-remote-write-receiver: "true"
+    web.enable-remote-write-receiver: null
   service:
     additionalPorts:
       - name: metrics
