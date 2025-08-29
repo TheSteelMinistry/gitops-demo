@@ -2,24 +2,29 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: api
-  name: api
+    app: web
+  name: web
   namespace: store
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api
+      app: web
   strategy: {}
   template:
     metadata:
       labels:
-        app: api
+        app: web
     spec:
       containers:
-        - image: livingwooods/store.api:1.0.0
+        - image: livingwooods/store.web:1.0.0
           imagePullPolicy: Always
-          name: store-api
+          name: store-web
+          env:
+            - name: OpenTelemetry__Endpoint
+              value: "http://alloy.observability.svc.cluster.local:4317"
+            - name: OTEL_METRIC_EXPORT_INTERVAL
+              value: "15000" # 15 seconds
           resources:
             limits:
               memory: "512Mi"
