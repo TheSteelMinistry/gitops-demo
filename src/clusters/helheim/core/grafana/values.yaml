@@ -1,9 +1,8 @@
 serviceAccount:
   name: sa-grafana
 
-admin:
-  userKey: admin
-  passwordKey: admin
+adminUser: admin
+adminPassword: admin
 
 datasources:
   datasources.yaml:
