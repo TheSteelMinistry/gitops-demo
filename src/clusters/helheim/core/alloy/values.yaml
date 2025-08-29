@@ -22,13 +22,13 @@ alloy:
         }
 
         output {
-          metrics = [prometheus.exporter.prometheus.input]
+          metrics = [otelcol.exporter.prometheus.prometheus.input]
           logs = [otelcol.exporter.loki.loki.input]
           traces = [otelcol.exporter.otlp.tempo.input]
         }
       }
 
-      prometheus.exporter "prometheus" {
+      otelcol.exporter.prometheus "prometheus" {
         forward_to = [prometheus.remote_write.pushgateway.receiver]
       }
 
