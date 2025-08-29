@@ -3,39 +3,38 @@ serviceAccount:
 
 alloy:
   configMap:
-    content:
-      config.alloy: |
-        otelcol.receiver.otlp "otlp" {
-          grpc {
-            endpoint = "0.0.0.0:4317"
-          }
-          http {
-            endpoint = "0.0.0.0:4318"
-          }
-
-          output {
-            metrics = [otelcol.exporter.prometheus.prometheus.input]
-            logs = [otelcol.exporter.loki.loki.input]
-            traces = []
-          }
+    content: |
+      otelcol.receiver.otlp "otlp" {
+        grpc {
+          endpoint = "0.0.0.0:4317"
+        }
+        http {
+          endpoint = "0.0.0.0:4318"
         }
 
-        otelcol.exporter.prometheus "prometheus" {
-          forward_to = [prometheus.remote_write.prometheus.receiver]
+        output {
+          metrics = [otelcol.exporter.prometheus.prometheus.input]
+          logs = [otelcol.exporter.loki.loki.input]
+          traces = []
         }
+      }
 
-        prometheus.remote_write "prometheus" {
-          endpoint {
-            url = "http://prometheus-server/api/v1/write"
-          }
-        }
+      otelcol.exporter.prometheus "prometheus" {
+        forward_to = [prometheus.remote_write.prometheus.receiver]
+      }
 
-        otelcol.exporter.loki "loki" {
-          forward_to = [loki.write.default.receiver]
+      prometheus.remote_write "prometheus" {
+        endpoint {
+          url = "http://prometheus-server/api/v1/write"
         }
+      }
 
-        loki.write "default" {
-          endpoint {
-            url = "http://loki-gateway/loki/api/v1/push"
-          }
+      otelcol.exporter.loki "loki" {
+        forward_to = [loki.write.default.receiver]
+      }
+
+      loki.write "default" {
+        endpoint {
+          url = "http://loki-gateway/loki/api/v1/push"
         }
+      }
