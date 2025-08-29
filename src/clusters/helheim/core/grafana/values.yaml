@@ -1,22 +1,30 @@
 serviceAccount:
   name: sa-grafana
 
+admin:
+  userKey: admin
+  passwordKey: admin
+
 datasources:
   datasources.yaml:
     apiVersion: 1
     datasources:
       - name: Prometheus
         type: prometheus
-        url: http://prometheus-server
+        url: http://prometheus-server:9090
         access: proxy
         isDefault: true
       - name: Loki
         type: loki
-        url: http://loki-gateway
+        url: http://loki-gateway:80
         access: proxy
         isDefault: false
+        jsonData:
+          httpHeaderName1: "X-Scope-OrgID"
+          secureJsonData:
+            httpHeaderValue1: "thesteelministry"
       - name: Tempo
         type: tempo
-        url: http://tempo
+        url: http://tempo:4317
         access: proxy
         isDefault: false
