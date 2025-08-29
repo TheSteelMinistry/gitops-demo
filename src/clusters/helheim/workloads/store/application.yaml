@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: store.api
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app: store.api
+spec:
+  destination:
+    namespace: store
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - repoURL: "https://github.com/TheSteelMinistry/gitops-demo"
+      path: src/clusters/helheim/workloads/store/manifests
+      targetRevision: HEAD
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - ServerSideApply=true
+      - CreateNamespace=true

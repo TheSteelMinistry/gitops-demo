@@ -9,3 +9,4 @@ resources:
   - core/tempo/application.yaml
   - core/alloy/application.yaml
   - core/grafana/application.yaml
+  - workloads/store/application.yaml
