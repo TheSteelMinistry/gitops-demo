@@ -2,12 +2,10 @@ serviceAccounts:
   server:
     name: sa-prometheus
 
-  serverFiles:
-    prometheus.yml:
-      scrape_configs:
-        - job_name: "prometheus"
-          static_configs:
-            - targets: ["localhost:9090"]
-        - job_name: "alloy"
-          static_configs:
-            - targets: ["alloy:8888"]
+server:
+  service:
+    additionalPorts:
+      - name: metrics
+        port: 9090
+        targetPort: 9090
+        protocol: TCP
