@@ -45,6 +45,7 @@ alloy:
       loki.write "default" {
         endpoint {
           url = "http://loki-gateway:80/loki/api/v1/push"
+          tenant_id = "thesteelministry"
         }
       }
 
