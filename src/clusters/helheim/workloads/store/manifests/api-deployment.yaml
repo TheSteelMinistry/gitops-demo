@@ -18,6 +18,7 @@ spec:
     spec:
       containers:
         - image: livingwooods/store.api:1.0.0
+          imagePullPolicy: Always
           name: store-api
           env:
             - name: OpenTelemetry__Endpoint
