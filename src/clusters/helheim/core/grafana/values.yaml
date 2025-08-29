@@ -20,6 +20,7 @@ datasources:
         isDefault: false
         jsonData:
           httpHeaderName1: "X-Scope-OrgID"
+        secureJsonData:
           httpHeaderValue1: "thesteelministry"
       - name: Tempo
         type: tempo
