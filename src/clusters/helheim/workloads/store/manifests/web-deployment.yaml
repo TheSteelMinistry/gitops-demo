@@ -25,6 +25,8 @@ spec:
               value: "http://alloy.observability.svc.cluster.local:4317"
             - name: OTEL_METRIC_EXPORT_INTERVAL
               value: "15000" # 15 seconds
+            - name: ProductApi__BaseUrl
+              value: "http://api.store.svc.cluster.local"
           resources:
             limits:
               memory: "512Mi"
