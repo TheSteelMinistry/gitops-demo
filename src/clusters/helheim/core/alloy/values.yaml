@@ -11,6 +11,10 @@ alloy:
       port: 4318
       targetPort: 4318
       protocol: TCP
+    - name: prometheus-metrics
+      port: 8888
+      targetPort: 8888
+      protocol: TCP
   configMap:
     content: |
       otelcol.receiver.otlp "otlp" {
@@ -28,15 +32,12 @@ alloy:
         }
       }
 
+      # Prometheus exporter — expose /metrics for scraping
       otelcol.exporter.prometheus "prometheus" {
-        forward_to = [prometheus.remote_write.prometheus.receiver]
+        listen_address = "0.0.0.0:8888"
       }
 
-      prometheus.remote_write "prometheus" {
-        endpoint {
-          url = "http://prometheus-prometheus-pushgateway:9091/metrics"
-        }
-      }
+      # Remove prometheus.remote_write block completely
 
       otelcol.exporter.loki "loki" {
         forward_to = [loki.write.default.receiver]
