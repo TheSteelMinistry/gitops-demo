@@ -2,6 +2,13 @@ serviceAccount:
   name: sa-alloy
 
 alloy:
+  extraPorts:
+    - name: otlp-grpc
+      containerPort: 4317
+      protocol: TCP
+    - name: otlp-http
+      containerPort: 4318
+      protocol: TCP
   configMap:
     content: |
       otelcol.receiver.otlp "otlp" {
