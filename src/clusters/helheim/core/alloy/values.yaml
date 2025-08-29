@@ -34,7 +34,7 @@ alloy:
 
       prometheus.remote_write "prometheus" {
         endpoint {
-          url = "http://prometheus-prometheus-pushgateway:9091/api/v1/write"
+          url = "http://prometheus-prometheus-pushgateway:9091/metrics"
         }
       }
 
