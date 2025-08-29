@@ -15,7 +15,7 @@ alloy:
         output {
           metrics = [otelcol.exporter.prometheus.prometheus.input]
           logs = [otelcol.exporter.loki.loki.input]
-          traces = []
+          traces = [otelcol.exporter.otlp.tempo.input]
         }
       }
 
@@ -36,5 +36,14 @@ alloy:
       loki.write "default" {
         endpoint {
           url = "http://loki-gateway/loki/api/v1/push"
+        }
+      }
+
+      otelcol.exporter.otlp "tempo" {
+        client {
+          endpoint = "tempo"
+          tls {
+            insecure = true
+          }
         }
       }
