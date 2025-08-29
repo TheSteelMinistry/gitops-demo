@@ -11,7 +11,7 @@ alloy:
       port: 4318
       targetPort: 4318
       protocol: TCP
-    - name: prometheus-metrics
+    - name: metrics
       port: 8888
       targetPort: 8888
       protocol: TCP
