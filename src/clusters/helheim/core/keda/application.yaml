@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   project: core
   sources:
-    - chart: loki
+    - chart: keda
       repoURL: https://kedacore.github.io/charts
       targetRevision: 1.4.2
   syncPolicy:
