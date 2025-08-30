@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - core/project.yaml
   - core/argocd/application.yaml
+  - core/keda/application.yaml
   - core/prometheus/application.yaml
   - core/loki/application.yaml
   - core/tempo/application.yaml
