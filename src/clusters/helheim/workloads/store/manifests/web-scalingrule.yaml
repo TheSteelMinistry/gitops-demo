@@ -18,4 +18,4 @@ spec:
         serverAddress: http://prometheus-server.observability.svc.cluster.local:9090
         metricName: active_users
         threshold: "100"
-        query: sum(rate(active_users[1m]))
+        query: sum(active_users[1m])
