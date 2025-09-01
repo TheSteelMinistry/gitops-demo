@@ -6,3 +6,4 @@ resources:
   - api-service.yaml
   - web-deployment.yaml
   - web-service.yaml
+  - web-scalingrule.yaml
