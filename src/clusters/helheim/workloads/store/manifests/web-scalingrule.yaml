@@ -8,6 +8,9 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: web
+  minReplicaCount: 1
+  pollingInterval: 15
+  cooldownPeriod: 30
   triggers:
     - type: prometheus
       metadata:
