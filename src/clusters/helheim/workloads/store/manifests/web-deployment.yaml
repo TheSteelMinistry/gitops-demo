@@ -6,7 +6,6 @@ metadata:
   name: web
   namespace: store
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: web
