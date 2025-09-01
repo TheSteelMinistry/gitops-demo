@@ -20,6 +20,7 @@ spec:
     - group: apps
       kind: Deployment
       name: web
+      namespace: store
       jsonPointers:
         - /spec/replicas
   syncPolicy:
