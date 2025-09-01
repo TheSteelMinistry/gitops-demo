@@ -16,6 +16,12 @@ spec:
     - repoURL: "https://github.com/TheSteelMinistry/gitops-demo"
       path: src/clusters/helheim/workloads/store/manifests
       targetRevision: HEAD
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      name: web
+      jsonPointers:
+        - /spec/replicas
   syncPolicy:
     automated:
       allowEmpty: true
