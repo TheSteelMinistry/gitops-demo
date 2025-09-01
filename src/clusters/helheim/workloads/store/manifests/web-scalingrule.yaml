@@ -9,6 +9,7 @@ spec:
     kind: Deployment
     name: web
   minReplicaCount: 1
+  maxReplicaCount: 5
   pollingInterval: 15
   cooldownPeriod: 30
   triggers:
