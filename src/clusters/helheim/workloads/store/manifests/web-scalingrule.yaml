@@ -1,0 +1,15 @@
+apiVersion: keda.k8s.io/v1alpha1
+kind: ScaledObject
+metadata:
+  name: sr-store-web
+  namespace: store
+spec:
+  scaleTargetRef:
+    deploymentName: store
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus-server:9090
+        metricName: active_users
+        threshold: "100"
+        query: sum(rate(active_users[1m]))
