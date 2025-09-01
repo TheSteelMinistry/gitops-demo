@@ -5,7 +5,9 @@ metadata:
   namespace: store
 spec:
   scaleTargetRef:
-    deploymentName: store
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web
   triggers:
     - type: prometheus
       metadata:
