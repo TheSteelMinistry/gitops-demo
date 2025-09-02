@@ -21,7 +21,7 @@ jobs:
 
       - name: Replace image version
         run: |
-            yq -i '.spec.template.spec.containers[0].image = "120915929317.dkr.ecr.eu-north-1.amazonaws.com/store/web:20250902.0847.4-rc-15"' src/clusters/helheim/workloads/store/manifests/web-deployment.yaml
+            yq -i -y '.spec.template.spec.containers[0].image = "120915929317.dkr.ecr.eu-north-1.amazonaws.com/store/web:20250902.0847.4-rc-15"' src/clusters/helheim/workloads/store/manifests/web-deployment.yaml
 
       - name: Commit changes
         run: |
