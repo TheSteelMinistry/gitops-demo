@@ -1,0 +1,29 @@
+name: Deploy Application
+
+on:
+  repository_dispatch:
+    types:
+      - new-image
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup YQ
+        run: |
+          sudo apt-get install -y yq
+
+      - name: Replace image version
+        run: |
+          yq e '.spec.template.spec.containers[0].image = "${{ github.event.client_payload.image }}"' -i src/clusters/helheim/workloads/${{ github.event.client_payload.workload }}/manifests/web-deployment.yaml
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/clusters/helheim/workloads/${{ github.event.client_payload.workload }}/manifests/web-deployment.yaml
+          git commit -m "Update image version to ${{ github.event.client_payload.image }}"
+          git push
