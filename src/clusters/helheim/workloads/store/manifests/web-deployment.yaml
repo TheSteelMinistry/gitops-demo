@@ -16,14 +16,14 @@ spec:
         app: web
     spec:
       containers:
-        - image: livingwooods/store.web:1.0.0
+        - image: 120915929317.dkr.ecr.eu-north-1.amazonaws.com/store/web:20250902.0847.4-rc-15
           imagePullPolicy: Always
           name: store-web
           env:
             - name: OpenTelemetry__Endpoint
               value: http://alloy.observability.svc.cluster.local:4317
             - name: OTEL_METRIC_EXPORT_INTERVAL
-              value: "15000"
+              value: '15000'
             - name: ProductApi__BaseUrl
               value: http://api.store.svc.cluster.local:8080/api/
           resources:
