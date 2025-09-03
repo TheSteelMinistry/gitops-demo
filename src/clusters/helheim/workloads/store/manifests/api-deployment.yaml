@@ -20,6 +20,11 @@ spec:
         - image: livingwooods/store.api:1.1.0
           imagePullPolicy: Always
           name: store-api
+          env:
+            - name: OpenTelemetry__Endpoint
+              value: http://alloy.observability.svc.cluster.local:4317
+            - name: OTEL_METRIC_EXPORT_INTERVAL
+              value: "15000"
           resources:
             limits:
               memory: "512Mi"
