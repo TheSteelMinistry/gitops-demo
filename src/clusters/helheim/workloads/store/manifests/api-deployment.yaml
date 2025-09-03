@@ -17,7 +17,7 @@ spec:
         app: api
     spec:
       containers:
-        - image: livingwooods/store.api:1.0.0
+        - image: livingwooods/store.api:1.1.0
           imagePullPolicy: Always
           name: store-api
           resources:
